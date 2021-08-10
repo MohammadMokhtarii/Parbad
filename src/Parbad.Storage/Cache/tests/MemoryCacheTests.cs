@@ -16,7 +16,7 @@ namespace Parbad.Storage.Cache.Tests
 
         private static Payment PaymentTestData => new Payment
         {
-            TrackingNumber = 1,
+            TrackingNumber = "1",
             Amount = 1000,
             Token = "token",
             TransactionCode = "test",
@@ -83,7 +83,7 @@ namespace Parbad.Storage.Cache.Tests
             await _storage.CreatePaymentAsync(PaymentTestData);
 
             var payment = _storage.Payments.SingleOrDefault();
-            payment.TrackingNumber = 2;
+            payment.TrackingNumber = "2";
             payment.Amount = 2000;
             payment.Token = "NewToken";
             payment.TransactionCode = "NewCode";

@@ -130,13 +130,13 @@
         <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.CreateTransactionAsync(Parbad.Storage.Abstractions.Models.Transaction,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.GetPaymentByTrackingNumberAsync(System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.GetPaymentByTrackingNumberAsync(System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.GetPaymentByTokenAsync(System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.DoesPaymentExistAsync(System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.DoesPaymentExistByTrackingNumberAsync(System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:Parbad.Storage.EntityFrameworkCore.EntityFrameworkCoreStorageManager.DoesPaymentExistAsync(System.String,System.Threading.CancellationToken)">

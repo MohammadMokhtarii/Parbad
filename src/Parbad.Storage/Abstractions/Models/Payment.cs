@@ -10,7 +10,7 @@ namespace Parbad.Storage.Abstractions.Models
     {
         public long Id { get; set; }
 
-        public long TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         public decimal Amount { get; set; }
 

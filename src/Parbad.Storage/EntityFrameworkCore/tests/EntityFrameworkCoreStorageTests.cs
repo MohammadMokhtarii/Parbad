@@ -18,7 +18,7 @@ namespace Parbad.Storage.EntityFrameworkCore.Tests
 
         private static readonly Payment PaymentTestData = new Payment
         {
-            TrackingNumber = 1,
+            TrackingNumber = "1",
             Amount = 1000,
             Token = "token",
             TransactionCode = "test",
@@ -80,7 +80,7 @@ namespace Parbad.Storage.EntityFrameworkCore.Tests
 
             Assert.IsNotNull(payment);
 
-            payment.TrackingNumber = 2;
+            payment.TrackingNumber = "2";
             payment.Amount = 2000;
             payment.Token = "NewToken";
             payment.TransactionCode = "NewCode";

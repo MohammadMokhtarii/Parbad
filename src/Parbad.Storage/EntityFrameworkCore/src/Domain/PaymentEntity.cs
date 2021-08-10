@@ -10,7 +10,7 @@ namespace Parbad.Storage.EntityFrameworkCore.Domain
     {
         public long Id { get; set; }
 
-        public long TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         public decimal Amount { get; set; }
 

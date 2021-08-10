@@ -18,7 +18,7 @@ namespace Parbad.Storage.EntityFrameworkCore.Tests
 
         private static readonly Payment PaymentTestData = new Payment
         {
-            TrackingNumber = 1,
+            TrackingNumber = "1",
             Amount = 1,
             Token = "token",
             GatewayAccountName = "default",
@@ -89,7 +89,7 @@ namespace Parbad.Storage.EntityFrameworkCore.Tests
         {
             await _storageManager.CreatePaymentAsync(PaymentTestData);
 
-            var exist = await _storageManager.DoesPaymentExistAsync(PaymentTestData.TrackingNumber);
+            var exist = await _storageManager.DoesPaymentExistByTrackingNumberAsync(PaymentTestData.TrackingNumber);
 
             Assert.IsTrue(exist);
         }

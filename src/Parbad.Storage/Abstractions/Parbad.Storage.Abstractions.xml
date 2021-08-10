@@ -117,7 +117,7 @@
             <param name="transaction"></param>
             <param name="cancellationToken"></param>
         </member>
-        <member name="M:Parbad.Storage.Abstractions.IStorageManager.GetPaymentByTrackingNumberAsync(System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Parbad.Storage.Abstractions.IStorageManager.GetPaymentByTrackingNumberAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets a payment by its tracking number.
             </summary>
@@ -131,7 +131,7 @@
             <param name="paymentToken"></param>
             <param name="cancellationToken"></param>
         </member>
-        <member name="M:Parbad.Storage.Abstractions.IStorageManager.DoesPaymentExistAsync(System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Parbad.Storage.Abstractions.IStorageManager.DoesPaymentExistByTrackingNumberAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Checks whether a payment exists with the given <paramref name="trackingNumber"/>.
             </summary>

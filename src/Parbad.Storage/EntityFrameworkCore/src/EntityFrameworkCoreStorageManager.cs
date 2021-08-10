@@ -43,7 +43,7 @@ namespace Parbad.Storage.EntityFrameworkCore
         }
 
         /// <inheritdoc />
-        public virtual Task<Payment> GetPaymentByTrackingNumberAsync(long trackingNumber, CancellationToken cancellationToken = default)
+        public virtual Task<Payment> GetPaymentByTrackingNumberAsync(string trackingNumber, CancellationToken cancellationToken = default)
         {
             return Storage.Payments
                 .AsNoTracking()
@@ -59,7 +59,7 @@ namespace Parbad.Storage.EntityFrameworkCore
         }
 
         /// <inheritdoc />
-        public virtual Task<bool> DoesPaymentExistAsync(long trackingNumber, CancellationToken cancellationToken = default)
+        public virtual Task<bool> DoesPaymentExistByTrackingNumberAsync(string trackingNumber, CancellationToken cancellationToken = default)
         {
             return Storage.Payments.AnyAsync(payment => payment.TrackingNumber == trackingNumber, cancellationToken);
         }

@@ -39,7 +39,7 @@ namespace Parbad.Storage.Abstractions
         /// </summary>
         /// <param name="trackingNumber"></param>
         /// <param name="cancellationToken"></param>
-        Task<Payment> GetPaymentByTrackingNumberAsync(long trackingNumber, CancellationToken cancellationToken = default);
+        Task<Payment> GetPaymentByTrackingNumberAsync(string trackingNumber, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets a payment by its token.
@@ -53,7 +53,7 @@ namespace Parbad.Storage.Abstractions
         /// </summary>
         /// <param name="trackingNumber"></param>
         /// <param name="cancellationToken"></param>
-        Task<bool> DoesPaymentExistAsync(long trackingNumber, CancellationToken cancellationToken = default);
+        Task<bool> DoesPaymentExistByTrackingNumberAsync(string trackingNumber, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Checks whether a payment exists with the given <paramref name="paymentToken"/>.
