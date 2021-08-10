@@ -18,7 +18,7 @@ namespace Parbad.Internal
         }
 
         /// <inheritdoc />
-        public long TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         /// <inheritdoc />
         public Money Amount { get; set; }

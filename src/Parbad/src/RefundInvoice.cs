@@ -2,6 +2,7 @@
 // Licensed under the GNU GENERAL PUBLIC License, Version 3.0. See License.txt in the project root for license information.
 
 using System;
+using Parbad.Internal;
 using Parbad.Properties;
 
 namespace Parbad
@@ -14,16 +15,16 @@ namespace Parbad
         /// <param name="trackingNumber"></param>
         /// <param name="amount"></param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public RefundInvoice(long trackingNumber, decimal amount = 0)
+        public RefundInvoice(string trackingNumber, decimal amount = 0)
         {
-            if (trackingNumber <= 0) throw new ArgumentOutOfRangeException(nameof(trackingNumber));
+            if (trackingNumber.IsNullOrEmpty()) throw new ArgumentOutOfRangeException(nameof(trackingNumber));
             if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount), Resources.AmountCannotBeNegative);
 
             TrackingNumber = trackingNumber;
             Amount = amount;
         }
 
-        public long TrackingNumber { get; }
+        public string TrackingNumber { get; }
 
         public decimal Amount { get; }
     }

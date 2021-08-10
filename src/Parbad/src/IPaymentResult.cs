@@ -13,7 +13,7 @@ namespace Parbad
         /// <summary>
         /// A unique number which will be used for tracking a specific payment.
         /// </summary>
-        long TrackingNumber { get; }
+        string TrackingNumber { get; }
 
         /// <summary>
         /// The amount of the payment.

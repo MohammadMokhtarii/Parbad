@@ -21,7 +21,7 @@ namespace Parbad.Abstraction
         /// <summary>
         /// Gets or sets the Tracking number of the invoice.
         /// </summary>
-        public long TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of the invoice.

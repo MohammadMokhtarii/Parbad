@@ -55,7 +55,7 @@ namespace Parbad.Internal
             _logger.LogInformation(LoggingEvents.RequestPayment, $"Requesting the invoice {invoice.TrackingNumber} is started.");
 
             //  Check the tracking number
-            if (await _storageManager.DoesPaymentExistAsync(invoice.TrackingNumber, cancellationToken).ConfigureAwaitFalse())
+            if (await _storageManager.DoesPaymentExistByTrackingNumberAsync(invoice.TrackingNumber, cancellationToken).ConfigureAwaitFalse())
             {
                 _logger.LogInformation(LoggingEvents.RequestPayment, _options.Messages.DuplicateTrackingNumber);
 
@@ -176,7 +176,7 @@ namespace Parbad.Internal
         }
 
         /// <inheritdoc />
-        public async Task<IPaymentFetchResult> FetchAsync(long trackingNumber, CancellationToken cancellationToken = default)
+        public async Task<IPaymentFetchResult> FetchAsync(string trackingNumber, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation(LoggingEvents.FetchPayment, $"Fetching from database for invoice number {trackingNumber} is started.");
 
@@ -195,7 +195,7 @@ namespace Parbad.Internal
         }
 
         /// <inheritdoc />
-        public virtual async Task<IPaymentVerifyResult> VerifyAsync(long trackingNumber, CancellationToken cancellationToken = default)
+        public virtual async Task<IPaymentVerifyResult> VerifyAsync(string trackingNumber, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation(LoggingEvents.VerifyPayment, $"Verifying the invoice {trackingNumber} is started.");
 
@@ -276,7 +276,7 @@ namespace Parbad.Internal
         }
 
         /// <inheritdoc />
-        public virtual async Task<IPaymentCancelResult> CancelAsync(long trackingNumber, string cancellationReason = null, CancellationToken cancellationToken = default)
+        public virtual async Task<IPaymentCancelResult> CancelAsync(string trackingNumber, string cancellationReason = null, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation(LoggingEvents.CancelPayment, $"Canceling the invoice {trackingNumber} is started.");
 
