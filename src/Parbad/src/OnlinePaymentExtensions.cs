@@ -31,7 +31,7 @@ namespace Parbad
         public static IPaymentRequestResult Request(
             this IOnlinePayment onlinePayment,
             string gatewayName,
-            long trackingNumber,
+            string trackingNumber,
             decimal amount,
             string callbackUrl) =>
             onlinePayment.RequestAsync(gatewayName, trackingNumber, amount, callbackUrl)
@@ -76,7 +76,7 @@ namespace Parbad
         public static Task<IPaymentRequestResult> RequestAsync(
             this IOnlinePayment onlinePayment,
             string gatewayName,
-            long trackingNumber,
+            string trackingNumber,
             decimal amount,
             string callbackUrl,
             CancellationToken cancellationToken = default)
@@ -130,7 +130,7 @@ namespace Parbad
         /// <param name="trackingNumber">Invoice's tracking number.</param>
         /// <exception cref="PaymentTokenProviderException"></exception>
         /// <exception cref="InvoiceNotFoundException"></exception>
-        public static IPaymentFetchResult Fetch(this IOnlinePayment onlinePayment, long trackingNumber)
+        public static IPaymentFetchResult Fetch(this IOnlinePayment onlinePayment, string trackingNumber)
             => onlinePayment.FetchAsync(trackingNumber).GetAwaiter().GetResult();
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Parbad
         /// <param name="onlinePayment"></param>
         /// <param name="trackingNumber">The tracking number of the invoice which must be verified.</param>
         /// <exception cref="InvoiceNotFoundException"></exception>
-        public static IPaymentVerifyResult Verify(this IOnlinePayment onlinePayment, long trackingNumber)
+        public static IPaymentVerifyResult Verify(this IOnlinePayment onlinePayment, string trackingNumber)
             => onlinePayment.VerifyAsync(trackingNumber).GetAwaiter().GetResult();
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Parbad
         /// <exception cref="InvoiceNotFoundException"></exception>
         public static IPaymentCancelResult Cancel(
             this IOnlinePayment onlinePayment,
-            long trackingNumber,
+            string trackingNumber,
             string cancellationReason = null)
             => onlinePayment.CancelAsync(trackingNumber, cancellationReason).GetAwaiter().GetResult();
 
@@ -236,7 +236,7 @@ namespace Parbad
         /// </summary>
         /// <param name="onlinePayment"></param>
         /// <param name="trackingNumber">The tracking number of the payment that must be refunded.</param>
-        public static IPaymentRefundResult RefundCompletely(this IOnlinePayment onlinePayment, long trackingNumber) =>
+        public static IPaymentRefundResult RefundCompletely(this IOnlinePayment onlinePayment, string trackingNumber) =>
             onlinePayment.RefundAsync(new RefundInvoice(trackingNumber))
                 .GetAwaiter()
                 .GetResult();
@@ -263,7 +263,7 @@ namespace Parbad
         /// <param name="amount">Amount of refund.</param>
         public static IPaymentRefundResult RefundSpecificAmount(
             this IOnlinePayment onlinePayment,
-            long trackingNumber,
+            string trackingNumber,
             decimal amount) =>
             onlinePayment.RefundSpecificAmountAsync(trackingNumber, amount)
                 .GetAwaiter()
@@ -277,7 +277,7 @@ namespace Parbad
         /// <param name="cancellationToken"></param>
         public static Task<IPaymentRefundResult> RefundCompletelyAsync(
             this IOnlinePayment onlinePayment,
-            long trackingNumber,
+            string trackingNumber,
             CancellationToken cancellationToken = default) =>
             onlinePayment.RefundAsync(new RefundInvoice(trackingNumber), cancellationToken);
 
@@ -291,7 +291,7 @@ namespace Parbad
         /// <param name="cancellationToken"></param>
         public static Task<IPaymentRefundResult> RefundSpecificAmountAsync(
             this IOnlinePayment onlinePayment,
-            long trackingNumber,
+            string trackingNumber,
             decimal amount,
             CancellationToken cancellationToken = default) =>
             onlinePayment.RefundAsync(new RefundInvoice(trackingNumber, amount), cancellationToken);

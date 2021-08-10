@@ -23,7 +23,7 @@ namespace Parbad
         /// The tracking number of invoice.
         /// <para>Note: It must be unique for each payment requests.</para>
         /// </param>
-        public static IInvoiceBuilder SetTrackingNumber(this IInvoiceBuilder builder, long trackingNumber)
+        public static IInvoiceBuilder SetTrackingNumber(this IInvoiceBuilder builder, string trackingNumber)
             => AddFormatter(builder, invoice => invoice.TrackingNumber = trackingNumber);
 
         /// <summary>
