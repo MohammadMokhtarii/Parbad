@@ -115,7 +115,7 @@ namespace Parbad.Gateway.IranKish.Internal
                 isSucceed = false;
                 message += "No InvoiceNumber is received.";
             }
-            else if (invoiceNumber.Value != context.Payment.TrackingNumber)
+            else if (invoiceNumber.Value.ToString() != context.Payment.TrackingNumber)
             {
                 isSucceed = false;
                 message += "InvoiceNumber is not valid.";
@@ -173,7 +173,7 @@ namespace Parbad.Gateway.IranKish.Internal
             {
                 return new PaymentVerifyResult
                 {
-                    TrackingNumber = callbackResult.InvoiceNumber,
+                    TrackingNumber =callbackResult.InvoiceNumber.ToString(),
                     TransactionCode = callbackResult.ReferenceId,
                     Status = PaymentVerifyResultStatus.Failed,
                     Message = $"{messagesOptions.InvalidDataReceivedFromGateway} Result: {result}"
@@ -188,7 +188,7 @@ namespace Parbad.Gateway.IranKish.Internal
 
             return new PaymentVerifyResult
             {
-                TrackingNumber = callbackResult.InvoiceNumber,
+                TrackingNumber = callbackResult.InvoiceNumber.ToString(),
                 TransactionCode = callbackResult.ReferenceId,
                 Status = isSuccess ? PaymentVerifyResultStatus.Succeed : PaymentVerifyResultStatus.Failed,
                 Message = translatedMessage

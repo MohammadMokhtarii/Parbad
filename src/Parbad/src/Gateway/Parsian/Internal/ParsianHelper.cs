@@ -115,8 +115,7 @@ namespace Parbad.Gateway.Parsian.Internal
                     isSucceed = false;
                     message = "Error in Callback section. Amount is null or empty.";
                 }
-                else if (!long.TryParse(orderId, out var numberOrderNumber) ||
-                         numberOrderNumber != context.Payment.TrackingNumber)
+                else if (orderId != context.Payment.TrackingNumber)
                 {
                     isSucceed = false;
                     message = "Error in Callback section. OrderNumber is not equal with the data in database.";

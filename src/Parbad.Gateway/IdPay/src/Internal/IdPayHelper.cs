@@ -27,7 +27,7 @@ namespace Parbad.Gateway.IdPay.Internal
         {
             return new IdPayRequestModel
             {
-                OrderId = invoice.TrackingNumber,
+                OrderId = long.Parse(invoice.TrackingNumber),
                 Amount = invoice.Amount,
                 Callback = invoice.CallbackUrl
             };
@@ -79,7 +79,7 @@ namespace Parbad.Gateway.IdPay.Internal
             return new IdPayVerifyModel
             {
                 Id = callbackResult.Id,
-                OrderId = context.Payment.TrackingNumber
+                OrderId = long.Parse(context.Payment.TrackingNumber)
             };
         }
 
@@ -157,12 +157,7 @@ namespace Parbad.Gateway.IdPay.Internal
                 return (false, messagesOptions.InvalidDataReceivedFromGateway);
             }
 
-            if (!long.TryParse(orderId, out var integerOrderId))
-            {
-                return (false, messagesOptions.InvalidDataReceivedFromGateway);
-            }
-
-            if (integerOrderId != context.Payment.TrackingNumber)
+            if (orderId != context.Payment.TrackingNumber)
             {
                 return (false, messagesOptions.InvalidDataReceivedFromGateway);
             }

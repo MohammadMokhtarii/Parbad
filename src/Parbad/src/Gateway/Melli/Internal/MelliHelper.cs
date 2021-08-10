@@ -31,7 +31,7 @@ namespace Parbad.Gateway.Melli.Internal
                 invoice.Amount,
                 signedData,
                 invoice.CallbackUrl,
-                invoice.TrackingNumber);
+                 long.Parse(invoice.TrackingNumber));
         }
 
         public static PaymentRequestResult CreateRequestResult(
@@ -93,7 +93,7 @@ namespace Parbad.Gateway.Melli.Internal
             var apiToken = await httpRequest.TryGetParamAsync("Token", cancellationToken).ConfigureAwaitFalse();
             var apiOrderId = await httpRequest.TryGetParamAsAsync<long>("OrderId", cancellationToken).ConfigureAwaitFalse();
 
-            if (!apiOrderId.Exists || apiOrderId.Value != context.Payment.TrackingNumber)
+            if (!apiOrderId.Exists || apiOrderId.Value.ToString() != context.Payment.TrackingNumber)
             {
                 return new MelliCallbackResult
                 {
@@ -155,7 +155,7 @@ namespace Parbad.Gateway.Melli.Internal
                 SignData = signedData,
                 ReturnUrl = callbackUrl,
                 LocalDateTime = DateTime.Now,
-                OrderId = orderId.ToString()
+                OrderId = orderId
             };
         }
 
